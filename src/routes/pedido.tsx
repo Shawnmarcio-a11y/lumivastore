@@ -76,6 +76,23 @@ function PedidoPage() {
       setErrors(errs);
       return;
     }
+
+    const msg = [
+      "*NOVO PEDIDO LUMIVÁ™*",
+      "",
+      `*Nome:* ${form.nome}`,
+      `*Telefone:* ${form.telefone}`,
+      `*Endereço:* ${form.endereco}`,
+      `*Referência:* ${form.referencia || "—"}`,
+      `*Província:* ${form.provincia}`,
+      `*Quantidade:* ${form.quantidade}×`,
+      `*Total:* ${total.toLocaleString("pt-PT")} MT`,
+      "",
+      "Pagamento na entrega.",
+    ].join("\n");
+
+    const url = `https://wa.me/258835055731?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
 
