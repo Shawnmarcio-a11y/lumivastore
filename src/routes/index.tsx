@@ -12,6 +12,7 @@ import { Guarantee } from "@/components/landing/Guarantee";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
 import { StickyMobileCTA } from "@/components/landing/StickyMobileCTA";
+import { OrderNotifications } from "@/components/landing/OrderNotifications";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -50,6 +51,7 @@ function Index() {
       <FAQ />
       <Footer />
       <StickyMobileCTA />
+      <OrderNotifications />
     </main>
   );
 }
