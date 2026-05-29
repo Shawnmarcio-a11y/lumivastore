@@ -4,12 +4,25 @@ import { z } from "zod";
 import product from "@/assets/product.png";
 import { Check, ArrowLeft } from "lucide-react";
 
+const SITE_URL = "https://clean-gleam-creator.lovable.app";
+
 export const Route = createFileRoute("/pedido")({
   head: () => ({
     meta: [
       { title: "Finalizar Pedido — LUMIVÁ™" },
-      { name: "description", content: "Preencha seus dados para receber o LUMIVÁ em casa. Pagamento na entrega." },
+      {
+        name: "description",
+        content:
+          "Preenche os teus dados para receber o LUMIVÁ™ Whitening Powder em casa. Pagamento na entrega em Moçambique.",
+      },
+      { property: "og:title", content: "Finalizar Pedido — LUMIVÁ™" },
+      {
+        property: "og:description",
+        content: "Recebe o teu LUMIVÁ™ em casa. Pagamento na entrega em todo Moçambique.",
+      },
+      { property: "og:url", content: `${SITE_URL}/pedido` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/pedido` }],
   }),
   component: PedidoPage,
 });
@@ -261,7 +274,7 @@ function PedidoPage() {
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="overflow-hidden rounded-3xl border border-black/5 bg-white p-6 shadow-[0_30px_60px_-30px_rgba(15,61,46,0.25)]">
             <div className="flex items-center gap-4">
-              <img src={product} alt="LUMIVÁ" width={160} height={160} className="size-20 object-contain" />
+              <img src={product} alt="Frasco de LUMIVÁ Whitening Powder natural" width={160} height={160} className="size-20 object-contain" />
               <div>
                 <p className="text-sm font-semibold text-[var(--ink)]">LUMIVÁ™ Whitening Powder</p>
                 <p className="text-xs text-neutral-500">Fórmula natural · 60g</p>
