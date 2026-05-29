@@ -77,7 +77,7 @@ function PedidoPage() {
       return;
     }
 
-    const msg = [
+    const ownerMsg = [
       "*NOVO PEDIDO LUMIVÁ™*",
       "",
       `*Nome:* ${form.nome}`,
@@ -91,8 +91,45 @@ function PedidoPage() {
       "Pagamento na entrega.",
     ].join("\n");
 
-    const url = `https://wa.me/258835055731?text=${encodeURIComponent(msg)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    const clientMsg = [
+      `🎉 *Parabéns pelo novo sorriso, ${form.nome.split(" ")[0]}!*`,
+      "",
+      "O teu pedido LUMIVÁ™ foi recebido com sucesso. Em breve a nossa equipa entra em contacto para confirmar a entrega.",
+      "",
+      "*Resumo do teu pedido:*",
+      `• Nome: ${form.nome}`,
+      `• Telefone: ${form.telefone}`,
+      `• Endereço: ${form.endereco}`,
+      `• Referência: ${form.referencia || "—"}`,
+      `• Província: ${form.provincia}`,
+      `• Quantidade: ${form.quantidade}×`,
+      `• Total: ${total.toLocaleString("pt-PT")} MT`,
+      "",
+      "Pagamento na entrega.",
+      "",
+      "Obrigado por confiares na LUMIVÁ™ ✨",
+    ].join("\n");
+
+    // Normalizar telefone do cliente (adicionar 258 se necessário)
+    const raw = form.telefone.replace(/[^0-9]/g, "");
+    const clientPhone = raw.startsWith("258") ? raw : `258${raw.replace(/^0+/, "")}`;
+
+    // Abrir WhatsApp com mensagem de parabéns para o cliente
+    window.open(
+      `https://wa.me/${clientPhone}?text=${encodeURIComponent(clientMsg)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+
+    // Notificar também o dono do negócio (com pequeno atraso para evitar bloqueio de popup)
+    setTimeout(() => {
+      window.open(
+        `https://wa.me/258835055731?text=${encodeURIComponent(ownerMsg)}`,
+        "_blank",
+        "noopener,noreferrer",
+      );
+    }, 400);
+
     setSubmitted(true);
   }
 
