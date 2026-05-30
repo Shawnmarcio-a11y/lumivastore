@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useScrolled } from "@/hooks/use-reveal";
+import logo from "@/assets/lumiva-logo.png";
 
 export function Header() {
   useScrolled(8);
@@ -13,9 +14,10 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <Link to="/" className="group flex items-center gap-2">
-          <span className="headline text-2xl tracking-tight text-[var(--ink)]">
+          <span className="headline inline-flex items-center gap-1.5 text-2xl tracking-tight text-[var(--ink)]">
             LUMIVÁ
-            <sup className="ml-0.5 text-[10px] align-super text-[var(--brand-deep)]">™</sup>
+            <img src={logo} alt="" aria-hidden="true" className="h-6 w-auto -translate-y-0.5" />
+            <sup className="text-[10px] align-super text-[var(--brand-deep)]">™</sup>
           </span>
         </Link>
         <Link
