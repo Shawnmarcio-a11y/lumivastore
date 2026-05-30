@@ -22,6 +22,8 @@ export const Route = createFileRoute("/pedido")({
         content: "Recebe o teu LUMIVÁ™ em casa. Pagamento na entrega em todo Moçambique.",
       },
       { property: "og:url", content: `${SITE_URL}/pedido` },
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/pedido` }],
   }),
