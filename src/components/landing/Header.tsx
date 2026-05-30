@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { useScrolled } from "@/hooks/use-reveal";
-import logo from "@/assets/lumiva-logo.png";
 
 export function Header() {
   useScrolled(8);

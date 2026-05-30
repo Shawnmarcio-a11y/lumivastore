@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/lumiva-logo.png";
 
 export function Footer() {
   return (

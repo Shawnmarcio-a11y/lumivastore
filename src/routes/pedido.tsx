@@ -3,7 +3,6 @@ import { useState } from "react";
 import { z } from "zod";
 import product from "@/assets/product.png";
 import { Check, ArrowLeft } from "lucide-react";
-import logo from "@/assets/lumiva-logo.png";
 
 const SITE_URL = "https://clean-gleam-creator.lovable.app";
 
