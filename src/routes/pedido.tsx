@@ -3,6 +3,7 @@ import { useState } from "react";
 import { z } from "zod";
 import product from "@/assets/product.png";
 import { Check, ArrowLeft } from "lucide-react";
+import logo from "@/assets/lumiva-logo.png";
 
 const SITE_URL = "https://clean-gleam-creator.lovable.app";
 
@@ -183,8 +184,10 @@ function PedidoPage() {
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-[var(--ink)]">
             <ArrowLeft className="size-4" /> Voltar
           </Link>
-          <span className="headline text-xl text-[var(--ink)]">
-            LUMIVÁ<sup className="ml-0.5 text-[9px] text-[var(--brand-deep)]">™</sup>
+          <span className="headline inline-flex items-center gap-1.5 text-xl text-[var(--ink)]">
+            LUMIVÁ
+            <img src={logo} alt="" aria-hidden="true" className="h-5 w-auto" />
+            <sup className="text-[9px] text-[var(--brand-deep)]">™</sup>
           </span>
         </div>
       </header>
