@@ -70,6 +70,7 @@ function PedidoPage() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   const unit = 997;
   const total = unit * (Number(form.quantidade) || 1);
