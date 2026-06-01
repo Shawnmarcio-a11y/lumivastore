@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import product from "@/assets/product.png";
-import { Check, ArrowLeft } from "lucide-react";
+import { Check, ArrowLeft, X, MessageCircle } from "lucide-react";
 
 const SITE_URL = "https://clean-gleam-creator.lovable.app";
 
