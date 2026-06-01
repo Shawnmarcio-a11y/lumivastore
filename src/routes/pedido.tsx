@@ -92,7 +92,10 @@ function PedidoPage() {
       setErrors(errs);
       return;
     }
+    setShowPreview(true);
+  }
 
+  function sendToWhatsApp() {
     const ownerMsg = [
       "*NOVO PEDIDO LUMIVÁ™*",
       "",
@@ -146,6 +149,7 @@ function PedidoPage() {
       );
     }, 400);
 
+    setShowPreview(false);
     setSubmitted(true);
   }
 
