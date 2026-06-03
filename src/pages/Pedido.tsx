@@ -1,32 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import product from "@/assets/product.png";
 import { Check, ArrowLeft } from "lucide-react";
 import logo from "@/assets/lumiva-logo.png";
-
-const SITE_URL = "https://clean-gleam-creator.lovable.app";
-
-export const Route = createFileRoute("/pedido")({
-  head: () => ({
-    meta: [
-      { title: "Finalizar Pedido — LUMIVÁ™" },
-      {
-        name: "description",
-        content:
-          "Preenche os teus dados para receber o LUMIVÁ™ Whitening Powder em casa. Pagamento na entrega em Moçambique.",
-      },
-      { property: "og:title", content: "Finalizar Pedido — LUMIVÁ™" },
-      {
-        property: "og:description",
-        content: "Recebe o teu LUMIVÁ™ em casa. Pagamento na entrega em todo Moçambique.",
-      },
-      { property: "og:url", content: `${SITE_URL}/pedido` },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/pedido` }],
-  }),
-  component: PedidoPage,
-});
 
 const provincias = [
   "Maputo Cidade",
@@ -58,7 +35,7 @@ const schema = z.object({
 
 type Form = z.infer<typeof schema>;
 
-function PedidoPage() {
+export default function PedidoPage() {
   const [form, setForm] = useState<Form>({
     nome: "",
     telefone: "",
@@ -69,6 +46,10 @@ function PedidoPage() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.title = "Finalizar Pedido — LUMIVÁ™";
+  }, []);
 
   const unit = 997;
   const total = unit * (Number(form.quantidade) || 1);
@@ -124,18 +105,15 @@ function PedidoPage() {
       "Obrigado por confiares na LUMIVÁ™ ✨",
     ].join("\n");
 
-    // Normalizar telefone do cliente (adicionar 258 se necessário)
     const raw = form.telefone.replace(/[^0-9]/g, "");
     const clientPhone = raw.startsWith("258") ? raw : `258${raw.replace(/^0+/, "")}`;
 
-    // Abrir WhatsApp com mensagem de parabéns para o cliente
     window.open(
       `https://wa.me/${clientPhone}?text=${encodeURIComponent(clientMsg)}`,
       "_blank",
       "noopener,noreferrer",
     );
 
-    // Notificar também o dono do negócio (com pequeno atraso para evitar bloqueio de popup)
     setTimeout(() => {
       window.open(
         `https://wa.me/258835055731?text=${encodeURIComponent(ownerMsg)}`,

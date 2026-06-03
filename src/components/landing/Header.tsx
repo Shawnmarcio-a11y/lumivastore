@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useScrolled } from "@/hooks/use-reveal";
 import logo from "@/assets/lumiva-logo.png";
 
