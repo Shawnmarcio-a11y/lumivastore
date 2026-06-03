@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import product from "@/assets/product.png";
 import { Check } from "lucide-react";
 
