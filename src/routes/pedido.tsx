@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import product from "@/assets/product.png";
-import { Check, ArrowLeft, X, MessageCircle } from "lucide-react";
+import { Check, ArrowLeft } from "lucide-react";
+import logo from "@/assets/lumiva-logo.png";
 
 const SITE_URL = "https://clean-gleam-creator.lovable.app";
 
@@ -21,8 +22,6 @@ export const Route = createFileRoute("/pedido")({
         content: "Recebe o teu LUMIVÁ™ em casa. Pagamento na entrega em todo Moçambique.",
       },
       { property: "og:url", content: `${SITE_URL}/pedido` },
-      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
-      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/pedido` }],
   }),
@@ -70,7 +69,6 @@ function PedidoPage() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
 
   const unit = 997;
   const total = unit * (Number(form.quantidade) || 1);
@@ -92,10 +90,7 @@ function PedidoPage() {
       setErrors(errs);
       return;
     }
-    setShowPreview(true);
-  }
 
-  function sendToWhatsApp() {
     const ownerMsg = [
       "*NOVO PEDIDO LUMIVÁ™*",
       "",
@@ -149,7 +144,6 @@ function PedidoPage() {
       );
     }, 400);
 
-    setShowPreview(false);
     setSubmitted(true);
   }
 
@@ -190,7 +184,11 @@ function PedidoPage() {
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-[var(--ink)]">
             <ArrowLeft className="size-4" /> Voltar
           </Link>
-          <span className="headline text-xl text-[var(--ink)]">LUMIVÁ™</span>
+          <span className="headline inline-flex items-center gap-1.5 text-xl text-[var(--ink)]">
+            LUMIVÁ
+            <img src={logo} alt="" aria-hidden="true" className="h-5 w-auto" />
+            <sup className="text-[9px] text-[var(--brand-deep)]">™</sup>
+          </span>
         </div>
       </header>
 
@@ -299,78 +297,6 @@ function PedidoPage() {
           </div>
         </aside>
       </div>
-
-      {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <div className="flex items-center justify-between border-b border-black/5 px-6 py-4">
-              <h2 className="headline text-lg text-[var(--ink)]">Revisa o teu pedido</h2>
-              <button
-                onClick={() => setShowPreview(false)}
-                className="grid size-8 place-items-center rounded-full text-neutral-400 hover:bg-black/5 hover:text-[var(--ink)]"
-                aria-label="Fechar"
-              >
-                <X className="size-5" />
-              </button>
-            </div>
-
-            <div className="px-6 py-5">
-              <div className="space-y-3 text-sm text-neutral-600">
-                <div className="flex justify-between">
-                  <span>Nome</span>
-                  <span className="font-medium text-[var(--ink)]">{form.nome}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Telefone</span>
-                  <span className="font-medium text-[var(--ink)]">{form.telefone}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Endereço</span>
-                  <span className="font-medium text-[var(--ink)] text-right max-w-[60%]">{form.endereco}</span>
-                </div>
-                {form.referencia && (
-                  <div className="flex justify-between">
-                    <span>Referência</span>
-                    <span className="font-medium text-[var(--ink)] text-right max-w-[60%]">{form.referencia}</span>
-                  </div>
-                )}
-                <div className="flex justify-between">
-                  <span>Província</span>
-                  <span className="font-medium text-[var(--ink)]">{form.provincia}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Quantidade</span>
-                  <span className="font-medium text-[var(--ink)]">{form.quantidade}×</span>
-                </div>
-              </div>
-
-              <div className="mt-5 flex items-end justify-between border-t border-black/5 pt-4">
-                <span className="text-sm text-neutral-500">Total</span>
-                <span className="headline text-2xl text-[var(--brand-deep)]">
-                  {total.toLocaleString("pt-PT")} <span className="text-base">MT</span>
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-neutral-500">Pagamento na entrega.</p>
-            </div>
-
-            <div className="flex gap-3 border-t border-black/5 px-6 py-4">
-              <button
-                onClick={() => setShowPreview(false)}
-                className="inline-flex flex-1 items-center justify-center rounded-full border border-black/10 px-6 py-3.5 text-sm font-medium text-neutral-600 hover:bg-neutral-50"
-              >
-                Voltar e editar
-              </button>
-              <button
-                onClick={sendToWhatsApp}
-                className="glow-cta inline-flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold"
-              >
-                <MessageCircle className="size-4" />
-                Enviar pelo WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }

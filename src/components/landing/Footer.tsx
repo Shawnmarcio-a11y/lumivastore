@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/lumiva-logo.png";
 
 export function Footer() {
   return (
@@ -18,7 +19,10 @@ export function Footer() {
         </Link>
       </div>
       <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row sm:px-10">
-        <span className="headline text-base text-white/80">LUMIVÁ™</span>
+        <span className="headline inline-flex items-center gap-1.5 text-base text-white/80">
+          LUMIVÁ™
+          <img src={logo} alt="" aria-hidden="true" className="h-5 w-auto brightness-0 invert opacity-80" />
+        </span>
         <span>© {new Date().getFullYear()} LUMIVÁ. Todos os direitos reservados.</span>
       </div>
     </footer>
