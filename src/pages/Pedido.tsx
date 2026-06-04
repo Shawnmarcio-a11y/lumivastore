@@ -4,7 +4,7 @@ import { z } from "zod";
 import product from "@/assets/product.png";
 import { Check, ArrowLeft } from "lucide-react";
 import logo from "@/assets/lumiva-logo.png";
-import CountdownTimer from "@/components/landing/CountdownTimer";
+import { CountdownTimer } from "@/components/landing/CountdownTimer";
 
 const provincias = [
   "Maputo Cidade",
@@ -177,6 +177,12 @@ export default function PedidoPage() {
           <p className="mt-3 text-neutral-600">
             Preenche os teus dados. Pagamento presencial — só pagas depois de receber.
           </p>
+          <div className="mt-5">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-red-600">
+              Oferta limitada — termina em:
+            </p>
+            <CountdownTimer />
+          </div>
 
           <form onSubmit={onSubmit} className="mt-8 space-y-5">
             <Field label="Nome completo" error={errors.nome}>
