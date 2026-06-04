@@ -87,41 +87,11 @@ export default function PedidoPage() {
       "Pagamento na entrega.",
     ].join("\n");
 
-    const clientMsg = [
-      `🎉 *Parabéns pelo novo sorriso, ${form.nome.split(" ")[0]}!*`,
-      "",
-      "O teu pedido LUMIVÁ™ foi recebido com sucesso. Em breve a nossa equipa entra em contacto para confirmar a entrega.",
-      "",
-      "*Resumo do teu pedido:*",
-      `• Nome: ${form.nome}`,
-      `• Telefone: ${form.telefone}`,
-      `• Endereço: ${form.endereco}`,
-      `• Referência: ${form.referencia || "—"}`,
-      `• Província: ${form.provincia}`,
-      `• Quantidade: ${form.quantidade}×`,
-      `• Total: ${total.toLocaleString("pt-PT")} MT`,
-      "",
-      "Pagamento na entrega.",
-      "",
-      "Obrigado por confiares na LUMIVÁ™ ✨",
-    ].join("\n");
-
-    const raw = form.telefone.replace(/[^0-9]/g, "");
-    const clientPhone = raw.startsWith("258") ? raw : `258${raw.replace(/^0+/, "")}`;
-
     window.open(
-      `https://wa.me/${clientPhone}?text=${encodeURIComponent(clientMsg)}`,
+      `https://wa.me/258835055731?text=${encodeURIComponent(ownerMsg)}`,
       "_blank",
       "noopener,noreferrer",
     );
-
-    setTimeout(() => {
-      window.open(
-        `https://wa.me/258835055731?text=${encodeURIComponent(ownerMsg)}`,
-        "_blank",
-        "noopener,noreferrer",
-      );
-    }, 400);
 
     setSubmitted(true);
   }
