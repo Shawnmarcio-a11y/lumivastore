@@ -28,9 +28,7 @@ export function Offer() {
         </div>
 
         <div className="reveal text-white">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-[var(--brand)]">
-            <Clock className="size-3.5" /> Oferta limitada
-          </span>
+          <CountdownTimer />
           <h2 className="headline mt-5 text-4xl sm:text-5xl lg:text-6xl">
             Oferta Especial <br /> de Hoje
           </h2>
