@@ -4,6 +4,7 @@ import { z } from "zod";
 import product from "@/assets/product.png";
 import { Check, ArrowLeft } from "lucide-react";
 import logo from "@/assets/lumiva-logo.png";
+import CountdownTimer from "@/components/landing/CountdownTimer";
 
 const provincias = [
   "Maputo Cidade",
