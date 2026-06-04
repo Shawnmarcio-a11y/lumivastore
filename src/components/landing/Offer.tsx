@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Check, Clock } from "lucide-react";
+import { Check } from "lucide-react";
 import product from "@/assets/product.png";
+import { CountdownTimer } from "./CountdownTimer";
 
 export function Offer() {
   return (
